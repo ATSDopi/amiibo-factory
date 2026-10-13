@@ -9,7 +9,7 @@ Based on [AmiiboDB/Amiibo](https://github.com/AmiiboDB/Amiibo) (964 dumps, all s
 Most public amiibo dumps are rips of **already-used figures**: the tag contains console registration data (owner nickname) and game appdata. On a real Switch/3DS this causes failures — the console detects the tag state, tries to write/validate it, and rejects the emulated tag. Two additional issues compound it:
 
 1. **Missing NTAG215 auth data** — since Flipper firmware **0.94.1** the device enforces real NTAG215 authentication during emulation ([firmware issue #3188](https://github.com/flipperdevices/flipperzero-firmware/issues/3188)). Dumps converted from `.bin` have `Page 133`/`Page 134` zeroed → the console reports *"This is not an amiibo"* or times out.
-2. **Used-state dumps** — verified empirically: dumps with registration/appdata filled are rejected by games (e.g. Zelda: Tears of the Kingdom), while factory-state dumps scan fine.
+2. **Used-state dumps** — verified empirically: dumps with registration/appdata filled are rejected by games (e.g. Zelda: Tears of the Kingdom), while factory-state dumps scan fine. Upstream knew about the symptom (its README listed *"Ganondorf/Link/Zelda (TotK) reportedly not working"* under **Problems to Fix**) — the used-state corruption was the actual cause.
 
 ## What was fixed, for every dump
 
