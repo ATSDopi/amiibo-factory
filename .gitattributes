@@ -1,0 +1,2 @@
+*.nfc text eol=lf
+*.bin binary
